@@ -1,0 +1,9 @@
+.register__text {
+  display: flex;
+  flex-direction: row;
+  color: #A0A0A0;
+  font-family: "Inter", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+}

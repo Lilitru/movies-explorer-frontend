@@ -1,0 +1,14 @@
+.about-project__container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 40px;
+  margin: 70px 70px 110px 0;
+}
+@media screen and (max-width: 1024px) {
+  .about-project__container {
+    margin: 70px 50px 93px 0;
+    column-gap: 30px;
+    row-gap: 22px;
+  }
+}

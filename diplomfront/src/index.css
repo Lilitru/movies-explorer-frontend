@@ -1,0 +1,124 @@
+@import url(./vendor/normalize.css);
+@import url(./vendor/fonts/fonts.css);
+
+/*Header */
+@import url(./components/Header/Header.css);
+@import url(./components/Header/__logo/header__logo.css);
+@import url(./components/Header/__sign/header__sign.css);
+@import url(./components/Header/__reg/header__reg.css);
+@import url(./components/Header/__links/header__links.css);
+@import url(./components/Header/__link/header__link.css);
+@import url(./components/Header/__btn/header__btn.css);
+@import url(./components/Header/__profile/header__profile.css);
+@import url(./components/Header/__text/header__text.css);
+@import url(./components/Header/__icon/header__icon.css);
+
+/*Main*/
+@import url(./components/Main/Main.css);
+@import url(./components/Promo/Promo.css);
+@import url(./components/Promo/__container/promo__container.css);
+@import url(./components/Promo/__title/promo__title.css);
+@import url(./components/Promo/__text/promo__text.css);
+@import url(./components/Promo/__btn/promo__btn.css);
+@import url(./components/Promo/__img/promo__img.css);
+@import url(./components/AboutProject/AboutProject.css);
+@import url(./components/AboutProject/__title/about-project__title.css);
+@import url(./components/AboutProject/__container/about-project__container.css);
+@import url(./components/AboutProject/__subtitle/about-project__subtitle.css);
+@import url(./components/AboutProject/__text/about-project__text.css);
+@import url(./components/AboutProject/__time/about-project__time.css);
+@import url(./components/AboutProject/__time/_black/about-project__time_black.css);
+@import url(./components/AboutProject/__time/_grey/about-project__time_grey.css);
+@import url(./components/AboutProject/__caption/about-project__caption.css);
+@import url(./components/AboutProject/__end/about-project__end.css);
+@import url(./components/Techs/Techs.css);
+@import url(./components/Techs/__title/techs__title.css);
+@import url(./components/Techs/__container/techs__container.css);
+@import url(./components/Techs/__subtitle/techs__subtitle.css);
+@import url(./components/Techs/__text/techs__text.css);
+@import url(./components/Techs/__cont/techs__cont.css);
+@import url(./components/Techs/__techn/techs__techn.css);
+@import url(./components/AboutMe/AboutMe.css);
+@import url(./components/AboutMe/__title/about-me__title.css);
+@import url(./components/AboutMe/__container/about-me__container.css);
+@import url(./components/AboutMe/__info/about-me__info.css);
+@import url(./components/AboutMe/__subtitle/about-me__subtitle.css);
+@import url(./components/AboutMe/__text/about-me__text.css);
+@import url(./components/AboutMe/__description/about-me__description.css);
+@import url(./components/AboutMe/__links/about-me__links.css);
+@import url(./components/AboutMe/__link/about-me__link.css);
+@import url(./components/AboutMe/__img/about-me__img.css);
+@import url(./components/Portfolio/Portfolio.css);
+@import url(./components/Portfolio/__title/portfolio__title.css);
+@import url(./components/Portfolio/__container/portfolio__container.css);
+@import url(./components/Portfolio/__subtitle/portfolio__subtitle.css);
+@import url(./components/Portfolio/__link/portfolio__link.css);
+@import url(./components/Portfolio/__img/portfolio__img.css);
+@import url(./components/Footer/Footer.css);
+@import url(./components/Footer/__title/footer__title.css);
+@import url(./components/Footer/__container/footer__container.css);
+@import url(./components/Footer/__list/footer__list.css);
+
+/* Movies */
+@import url(./components/Movies/Movies.css);
+@import url(./components/SearchForm/SearchForm.css);
+@import url(./components/SearchForm/__container/search-form__container.css);
+@import url(./components/SearchForm/__search/search-form__search.css);
+@import url(./components/SearchForm/__img/search-form__img.css);
+@import url(./components/SearchForm/__input/search-form__input.css);
+@import url(./components/SearchForm/__btn/search-form__btn.css);
+@import url(./components/SearchForm/__span/search-form__span.css);
+@import url(./components/SearchForm/__filter/search-form__filter.css);
+@import url(./components/SearchForm/__check/search-form__check.css);
+@import url(./components/SearchForm/__radio/search-form__radio.css);
+@import url(./components/SearchForm/__text/search-form__text.css);
+@import url(./components/MoviesCardList/MoviesCardList.css);
+@import url(./components/MoviesCardList/__lists/movies-card-list__lists.css);
+@import url(./components/MoviesCardList/__btn/movies-card-list__btn.css);
+@import url(./components/MoviesCard/MoviesCard.css);
+@import url(./components/MoviesCard/__btn/movies-card__btn.css);
+@import url(./components/MoviesCard/__img/movies-card__img.css);
+@import url(./components/MoviesCard/__description/movies-card__description.css);
+@import url(./components/MoviesCard/__title/movies-card__title.css);
+@import url(./components/MoviesCard/__time/movies-card__time.css);
+
+/* Preloader */
+/* @import url(./components/Preloader/Preloader.css); */
+
+/* Profile */
+@import url(./components/Profile/Profile.css);
+@import url(./components/Profile/__title/profile__title.css);
+@import url(./components/Profile/__form/profile__form.css);
+@import url(./components/Profile/__label/profile__label.css);
+@import url(./components/Profile/__input/profile__input.css);
+@import url(./components/Profile/__span/profile__span.css);
+@import url(./components/Profile/__btn/profile__btn.css);
+@import url(./components/Profile/__link/profile__link.css);
+
+/* Register */
+@import url(./components/Register/Register.css);
+@import url(./components/Register/__cont/register__cont.css);
+@import url(./components/Register/__logo/register__logo.css);
+@import url(./components/Register/__title/register__title.css);
+@import url(./components/Register/__form/register__form.css);
+@import url(./components/Register/__input/register__input.css);
+@import url(./components/Register/__btn/register__btn.css);
+@import url(./components/Register/__text/register__text.css);
+@import url(./components/Register/__link/register__link.css);
+
+/* Login */
+@import url(./components/Login/Login.css);
+@import url(./components/Login/__cont/login__cont.css);
+@import url(./components/Login/__logo/login__logo.css);
+@import url(./components/Login/__title/login__title.css);
+@import url(./components/Login/__form/login__form.css);
+@import url(./components/Login/__input/login__input.css);
+@import url(./components/Login/__btn/login__btn.css);
+@import url(./components/Login/__text/login__text.css);
+@import url(./components/Login/__link/login__link.css);
+
+/* Error */
+@import url(./components/Error/Error.css);
+@import url(./components/Error/__title/error__title.css);
+@import url(./components/Error/__subtitle/error__subtitle.css);
+@import url(./components/Error/__link/error__link.css);

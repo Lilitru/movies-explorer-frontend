@@ -1,0 +1,7 @@
+.search-form__check {
+  max-width: 36px;
+  background: #2be080;
+  border-radius: 20px;
+  padding: 6px 6px 6px 22px;
+  cursor: pointer;
+}

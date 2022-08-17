@@ -1,0 +1,12 @@
+.header__link {
+    max-width: 77px;
+    text-decoration: none;
+    cursor: pointer;
+    margin: 28px 0 28px 16px;
+    padding: 0;
+  }
+  
+  
+.header__link:hover {
+  opacity: 0.6;
+}

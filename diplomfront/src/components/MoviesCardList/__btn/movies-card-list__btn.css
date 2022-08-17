@@ -1,0 +1,15 @@
+.movies-card-list__btn{
+    max-width: 320px;
+    cursor: pointer;
+    font-family: "Inter", Arial, sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 15px;
+    color: #000000;
+    border-radius: 30px;
+    text-align: center;
+    border:solid 1px #E8E8E8;
+    background-color: transparent;
+    margin: 50px 0 80px 0;
+    padding: 11px 50px 9px 50px;
+}

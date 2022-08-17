@@ -1,0 +1,13 @@
+.techs__cont {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  font-family: "Inter", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #000000;
+  margin: 0;
+  text-align: center;
+  letter-spacing: -0.04em;
+}

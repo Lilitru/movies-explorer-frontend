@@ -1,0 +1,10 @@
+.promo__img{
+    max-width: 310px;
+    max-height: 304px;
+}
+@media screen and (max-width: 1024px) {
+    .promo__img {
+      order: -1;
+      margin: 0 0 48px 0;
+    }
+  }

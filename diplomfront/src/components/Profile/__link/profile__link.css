@@ -1,0 +1,11 @@
+.profile__link{
+    border-style: none;
+    text-decoration: none;
+    margin: 16px 0 0 0;
+    font-family: "Inter", Arial, sans-serif;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 16px;
+    color: #FF4062;;
+    max-width: 410px;
+}

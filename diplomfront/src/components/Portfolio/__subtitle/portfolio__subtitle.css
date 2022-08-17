@@ -1,0 +1,11 @@
+.portfolio__subtitle {
+  font-family: "Inter", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 50px;
+  color: #000000;
+  margin: 0;
+  text-align: left;
+  letter-spacing: -0.04em;
+  border-bottom: 1px solid #e8e8e8;
+}

@@ -1,0 +1,13 @@
+.header__profile {
+  width: 100px;
+  height: 32px;
+  text-decoration: none;
+  background: #ffffff;
+  cursor: pointer;
+  border: none;
+  margin: 25px 0 17px 0;
+  box-shadow: 0px 3px 14px rgba(0, 0, 0, 0.08);
+  border-radius: 40px;
+  display: flex;
+  flex-direction: row;
+}
