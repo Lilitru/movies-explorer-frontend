@@ -16,3 +16,8 @@
   white-space: nowrap;
   text-decoration: none;
 }
+@media screen and (max-width: 767px) {
+  .promo__btn {
+    margin: 0;
+  }
+}

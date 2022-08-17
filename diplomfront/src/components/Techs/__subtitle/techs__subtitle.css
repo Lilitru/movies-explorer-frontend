@@ -9,3 +9,15 @@
   letter-spacing: -0.04em;
   max-width: 600px;
 }
+@media screen and (max-width: 1024px) {
+  .techs__subtitle {
+    margin: 0 0 22px 0;
+  }
+}
+@media screen and (max-width: 767px) {
+  .techs__subtitle {
+    font-size: 30px;
+    line-height: 36px;
+    margin: 0 0 24px 0;
+  }
+}

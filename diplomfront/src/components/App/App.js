@@ -16,7 +16,7 @@ function App() {
   let [loggedIn, setLoggedIn] = React.useState(false);
 
   return (
-    <div className="App">
+    <div className="app">
       <Header isLoggedIn = {loggedIn} />
       <Switch>
         <Route exact path="/">

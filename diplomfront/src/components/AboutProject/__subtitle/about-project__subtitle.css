@@ -8,3 +8,10 @@
   text-align: left;
   letter-spacing: -0.04em;
 }
+@media screen and (max-width: 767px) {
+  .about-project__subtitle {
+    order: 3;
+    font-size: 18px;
+    line-height: 22px;
+  }
+}

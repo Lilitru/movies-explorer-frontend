@@ -3,3 +3,8 @@
   margin: 16px 0 17px 0;
   width: 410px;
 }
+@media screen and (max-width: 767px) {
+  .profile__span {
+      width: 260px;
+  }
+}

@@ -1,3 +1,13 @@
 .register{
     margin: 70px 0 70px 0;
 }
+@media screen and (max-width: 1024px) {
+    .register {
+      margin: 232px 0 232px 0;
+    }
+  }
+  @media screen and (max-width: 767px) {
+    .register {
+      margin: 56px 0 30px 0;
+    }
+  }

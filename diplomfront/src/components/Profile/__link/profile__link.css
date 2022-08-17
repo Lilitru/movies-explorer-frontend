@@ -9,3 +9,9 @@
     color: #FF4062;;
     max-width: 410px;
 }
+@media screen and (max-width: 767px) {
+    .profile__link {
+      font-size: 12px;
+    line-height: 15px;
+    }
+  }

@@ -1,0 +1,7 @@
+.about-project__text_grid{
+}
+@media screen and (max-width: 767px) {
+    .about-project__text_grid {
+      order: 2;
+    }
+  }

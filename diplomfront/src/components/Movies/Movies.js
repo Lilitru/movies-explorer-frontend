@@ -7,6 +7,7 @@ function Movies() {
         <section className="movies">
           <SearchForm />
            <MoviesCardList />
+           <button className='movies__btn'>Ещё</button>
           {/* <Preloader /> */}
         </section>
     );

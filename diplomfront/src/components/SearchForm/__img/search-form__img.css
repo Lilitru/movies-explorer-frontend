@@ -5,3 +5,8 @@
   height: 34px;
   object-fit: none;
 }
+@media screen and (max-width: 767px) {
+  .search-form__img {
+    display: none;
+  }
+}

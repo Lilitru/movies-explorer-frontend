@@ -1,7 +1,13 @@
-.about-me__container{
-    display: flex;
-    flex-direction: row;
-    text-align: left;
-    margin: 66px 0 100px 0;
-    justify-content: space-between;
+.about-me__container {
+  display: flex;
+  flex-direction: row;
+  text-align: left;
+  margin: 66px 0 100px 0;
+  justify-content: space-between;
+}
+@media screen and (max-width: 767px) {
+  .about-me__container {
+    flex-direction: column;
+    margin: 60px 0 69px 0;
+  }
 }

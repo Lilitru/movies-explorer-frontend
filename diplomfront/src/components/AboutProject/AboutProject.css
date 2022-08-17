@@ -6,3 +6,8 @@
     margin: 90px 50px;
   }
 }
+@media screen and (max-width: 767px) {
+  .about-project {
+    margin: 70px 18px;
+  }
+}

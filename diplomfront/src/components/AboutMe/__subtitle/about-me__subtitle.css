@@ -6,3 +6,17 @@
   color: #000000;
   margin: 0 0 18px 0;
 }
+@media screen and (max-width: 1024px) {
+  .about-me__subtitle {
+    font-size: 40px;
+    line-height: 40px;
+    margin: 0 0 16px 0;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .about-me__subtitle {
+    font-size: 30px;
+    line-height: 36px;
+    margin: 40px 0 20px 0;
+  }
+}

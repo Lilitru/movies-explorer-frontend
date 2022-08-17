@@ -8,7 +8,21 @@
   cursor: pointer;
 }
 
-.footer__list:first-child{
-    margin: 0 809px 0 0;
-    cursor: none;
+.footer__list:first-child {
+  margin: 0 761px 0 0;
+  cursor: none;
+}
+@media screen and (max-width: 1024px) {
+  .footer__list:first-child {
+    margin: 0 329px 0 0;
+  }
+}
+@media screen and (max-width: 767px) {
+  .footer__list:first-child {
+    margin: 0;
+    order: 1;
+  }
+  .footer{
+    margin: 0 0 12px 0;
+  }
 }

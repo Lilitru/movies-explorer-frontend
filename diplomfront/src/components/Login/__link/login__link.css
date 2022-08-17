@@ -8,3 +8,11 @@
   text-decoration: none;
   align-self: center;
 }
+@media screen and (max-width: 767px) {
+  .login__link {
+    font-size: 12px;
+    line-height: 15px;
+    margin: 0 0 0 7px;
+  }
+}
+

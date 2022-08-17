@@ -4,8 +4,16 @@
   font-size: 22px;
   line-height: 27px;
   color: #000000;
-  margin: 0 0 23px 0;
+  padding: 0 0 23px 0;
+  margin: 0;
   text-align: left;
   border-bottom: 1px solid #000000;
   letter-spacing: -0.04em;
+}
+@media screen and (max-width: 767px) {
+  .about-project__title {
+    font-size: 18px;
+    line-height: 22px;
+    padding: 0 0 28px 0;
+  }
 }

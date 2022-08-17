@@ -8,3 +8,8 @@
     width: 141px;
     text-align: start;
 }
+@media screen and (max-width: 767px) {
+    .profile__label {
+        width: 130px;
+    }
+  }

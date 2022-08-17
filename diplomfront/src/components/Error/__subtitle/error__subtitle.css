@@ -6,3 +6,10 @@
     line-height: 19px;
     color: #000000;
 }
+@media screen and (max-width: 767px) {
+    .error__subtitle {
+      font-size: 12px;
+      line-height: 15px;
+      margin: 10px 0 284px 0;
+    }
+  }

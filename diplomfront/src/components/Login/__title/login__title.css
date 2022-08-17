@@ -8,3 +8,10 @@
   width: 396px;
   text-align: start;
 }
+@media screen and (max-width: 767px) {
+  .login__title {
+    margin: 50px 0 80px 0;
+    max-width: 260px;
+    text-align: center;
+  }
+}

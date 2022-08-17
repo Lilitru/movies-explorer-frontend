@@ -12,3 +12,8 @@
     align-items: center;
   }
 }
+@media screen and (max-width: 767px) {
+  .promo {
+    padding: 149px 0 30px 0;
+  }
+}

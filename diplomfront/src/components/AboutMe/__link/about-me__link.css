@@ -7,3 +7,8 @@
   margin: 0 20px 0 0;
   cursor: pointer;
 }
+@media screen and (max-width: 767px) {
+  .about-me__link {
+    margin: 0 26px 0 0;
+  }
+}

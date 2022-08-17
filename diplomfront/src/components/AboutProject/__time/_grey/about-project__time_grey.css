@@ -3,3 +3,13 @@
     background-color: #F2F2F2;
     padding: 9px 425px;
 }
+@media screen and (max-width: 1024px) {
+    .about-project__time_grey {
+        padding: 9px 264px;
+    }
+  }
+  @media screen and (max-width: 767px) {
+    .about-project__time_grey {
+        padding: 11px 92px;
+    }
+  }

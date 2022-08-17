@@ -6,3 +6,9 @@
   line-height: 169px;
   color: #000000;
 }
+@media screen and (max-width: 767px) {
+  .error__title {
+    font-size: 80px;
+    line-height: 97px;
+  }
+}

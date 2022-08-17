@@ -14,3 +14,17 @@
 .profile__btn:hover{
     opacity: 0.5;
 }
+
+@media screen and (max-width: 1024px) {
+  .profile__btn {
+    margin: 210px 0 0 0;
+  }
+}
+@media screen and (max-width: 767px) {
+  .profile__btn {
+    font-size: 12px;
+  line-height: 15px;
+  max-width: 300px;
+  margin: 379px 0 0 0;
+  }
+}

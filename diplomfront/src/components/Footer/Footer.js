@@ -15,7 +15,7 @@ function Footer() {
         <footer className="footer">
           <h3 className="footer__title">Учебный проект Яндекс.Практикум х BeatFilm.</h3>
           <ul className='footer__container'>
-            <li className='footer__list'>© 2020</li>
+            <li className='footer__list'>© 2022</li>
             <li className='footer__list'>Яндекс.Практикум</li>
             <li className='footer__list'>Github</li>
             <li className='footer__list'>Facebook</li>

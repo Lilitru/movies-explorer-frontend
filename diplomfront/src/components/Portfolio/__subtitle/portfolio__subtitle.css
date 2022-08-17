@@ -9,3 +9,14 @@
   letter-spacing: -0.04em;
   border-bottom: 1px solid #e8e8e8;
 }
+@media screen and (max-width: 1024px) {
+  .portfolio__subtitle {
+    font-size: 28px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .portfolio__subtitle {
+    font-size: 18px;
+    line-height: 28px;
+  }
+}
