@@ -1,8 +1,11 @@
 import React from "react";
 import { Link } from 'react-router-dom';
+import Burger from "../Burger/Burger";
 
 function Profile() {
     return (
+        <>
+        <Burger />
         <section className="profile">
             <h2 className="profile__title">Привет, Лилия!</h2>
             <div className="profile__form">
@@ -17,6 +20,7 @@ function Profile() {
             <button className='profile__btn'>Редактировать</button>
             <Link to='/signin' className='profile__link'>Выйти из аккаунта</Link>
         </section >
+        </>
     );
 }
 

@@ -124,3 +124,9 @@
 @import url(./components/Error/__title/error__title.css);
 @import url(./components/Error/__subtitle/error__subtitle.css);
 @import url(./components/Error/__link/error__link.css);
+
+/* Burger */
+@import url(./components/Burger/Burger.css);
+
+/* Navigation */
+@import url(./components/Navigation/Navigation.css);

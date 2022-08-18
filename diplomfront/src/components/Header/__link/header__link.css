@@ -10,3 +10,9 @@
 .header__link:hover {
   opacity: 0.6;
 }
+
+@media screen and (max-width: 1024px) {
+  .header__link {
+   display: none;
+  }
+}
