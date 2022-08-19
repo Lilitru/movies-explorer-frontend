@@ -2,7 +2,7 @@
     background: #ffffff;
     margin: 100px 70px 125px 70px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
 }
 @media screen and (max-width: 1024px) {

@@ -1,11 +1,11 @@
 .portfolio__img{
-    max-width: 29px;
-    max-height: 60px;
-    margin: 0 0 30px 0;
+    max-width: 18px;
+    max-height: 17px;
+    margin: 0;
 }
-@media screen and (max-width: 767px) {
+/* @media screen and (max-width: 767px) {
     .portfolio__img {
         max-width: 18px;
         max-height: 28px;
     }
-  }
+  } */

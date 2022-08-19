@@ -11,9 +11,9 @@ function Register(props) {
                 </Link>
                 <h2 className="register__title">Добро пожаловать!</h2>
                 <form name="" className="register__form">
-                    <input className="register__input" placeholder="Имя" />
-                    <input className="register__input" placeholder="E-mail" />
-                    <input className="register__input" placeholder="Пароль" />
+                    <input className="register__input" placeholder="Имя" required />
+                    <input className="register__input" placeholder="E-mail" required />
+                    <input className="register__input" placeholder="Пароль" required />
                     <button type="submit" className="register__btn">Зарегистрироваться</button>
                 </form>
                 <div className="register__text">

@@ -1,0 +1,19 @@
+.movies-card__span {
+  display: none;
+}
+.movies-card__span_active {
+    display: block;
+    border: none;
+    counter-reset: none;
+    cursor: none;
+    height: 21px;
+    width: 21px;
+    position: absolute;
+    right: 14px;
+    top: 14px;
+    border-radius: 30px;
+    background: #ff4062;
+    background-image: url(../../../images/icon__savedMovie.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+}

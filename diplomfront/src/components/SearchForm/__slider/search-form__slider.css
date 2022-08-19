@@ -1,0 +1,22 @@
+.search-form__slider{
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #EBEBEB;
+    transition: .5s;
+}
+.search-form__slider.search-form__round{
+    border-radius: 20px;
+}
+.search-form__slider:before{
+    position: absolute;
+    content: "";
+    height: 8px;
+    width: 8px;
+    top: 6px;
+    background-color: #F5F5F5;
+    transition: .5s;
+}

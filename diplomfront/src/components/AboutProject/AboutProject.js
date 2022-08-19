@@ -12,14 +12,26 @@ function AboutProject() {
                 <p className="about-project__text">У каждого этапа был мягкий и жёсткий дедлайн, которые нужно было соблюдать, чтобы успешно защититься.
                 </p>
             </div>
-            <div className="about-project__time">
+            <div className="about-project__line">
+                <div className="about-project__back">
+                    <p className='about-project__time about-project__time_black'>1 неделя</p>
+                    <p className='about-project__end about-project__caption'>Back-end</p>
+                </div>
+                <div className="about-project__front">
+                    <p className='about-project__time about-project__time_grey'>4 недели</p>
+                    <p className='about-project__end about-project__caption'>Front-end</p>
+                </div>
+            </div>
+
+
+            {/* <div className="about-project__time">
                 <p className='about-project__time about-project__time_black'>1 неделя</p>
                 <p className='about-project__time about-project__time_grey'>4 недели</p>
             </div>
             <div className="about-project__caption">
                 <p className='about-project__end'>Back-end</p>
                 <p className='about-project__end'>Front-end</p>
-            </div>
+            </div> */}
         </section>
     );
 }

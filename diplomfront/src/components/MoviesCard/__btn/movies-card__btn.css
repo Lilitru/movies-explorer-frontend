@@ -15,3 +15,6 @@
   text-align: center;
   background: #F9F9F9;
 }
+.movies-card__btn_active{
+  display: none;
+}

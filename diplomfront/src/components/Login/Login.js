@@ -11,8 +11,8 @@ function Login(props) {
                 </Link>
                 <h2 className="login__title">Рады видеть!</h2>
                 <form name="" className="login__form">
-                    <input className="login__input" placeholder="E-mail" />
-                    <input className="login__input" placeholder="Пароль" />
+                    <input className="login__input" placeholder="E-mail" required />
+                    <input className="login__input" placeholder="Пароль" required />
                     <button type="submit" className="login__btn">Войти</button>
                 </form>
                 <div className="login__text">

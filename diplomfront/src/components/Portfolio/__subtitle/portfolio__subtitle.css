@@ -8,6 +8,7 @@
   text-align: left;
   letter-spacing: -0.04em;
   border-bottom: 1px solid #e8e8e8;
+  text-decoration: none;
 }
 @media screen and (max-width: 1024px) {
   .portfolio__subtitle {

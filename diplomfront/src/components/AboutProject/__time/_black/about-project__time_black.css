@@ -1,7 +1,7 @@
 .about-project__time_black{
     color: #ffffff;
     background-color: #000000;
-    padding: 9px 114px;
+    padding: 9px;
 }
 @media screen and (max-width: 1024px) {
     .about-project__time_black {

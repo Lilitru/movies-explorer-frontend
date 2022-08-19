@@ -1,4 +1,8 @@
 .portfolio__container {
   display: flex;
   flex-direction: column;
+  list-style: none;
+  text-decoration: none;
+  padding: 0;
+  margin: 0;
 }

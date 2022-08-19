@@ -2,7 +2,7 @@ import React from "react";
 import Navigation from "../Navigation/Navigation";
 
 function Burger() {
-    const [menuActive, setMenuActive] = React.useState(false)
+    const [menuActive, setMenuActive] = React.useState(false);
     const items = [{ value: "Главная", href: '/' },
     { value: "Фильмы", href: '/movies' },
     { value: "Сохраненные фильмы", href: '/saved-movies' },

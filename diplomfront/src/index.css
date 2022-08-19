@@ -28,6 +28,7 @@
 @import url(./components/AboutProject/__subtitle/_grid/about-project__subtitle_grid.css);
 @import url(./components/AboutProject/__text/about-project__text.css);
 @import url(./components/AboutProject/__text/_grid/about-project__text_grid.css);
+@import url(./components/AboutProject/__line/about-project__line.css);
 @import url(./components/AboutProject/__time/about-project__time.css);
 @import url(./components/AboutProject/__time/_black/about-project__time_black.css);
 @import url(./components/AboutProject/__time/_grey/about-project__time_grey.css);
@@ -74,11 +75,14 @@
 @import url(./components/SearchForm/__filter/search-form__filter.css);
 @import url(./components/SearchForm/__check/search-form__check.css);
 @import url(./components/SearchForm/__radio/search-form__radio.css);
+@import url(./components/SearchForm/__slider/search-form__slider.css);
 @import url(./components/SearchForm/__text/search-form__text.css);
 @import url(./components/MoviesCardList/MoviesCardList.css);
 @import url(./components/MoviesCardList/__lists/movies-card-list__lists.css);
 @import url(./components/MoviesCard/MoviesCard.css);
 @import url(./components/MoviesCard/__btn/movies-card__btn.css);
+@import url(./components/MoviesCard/__span/movies-card__span.css);
+@import url(./components/MoviesCard/__delete/movies-card__delete.css);
 @import url(./components/MoviesCard/__img/movies-card__img.css);
 @import url(./components/MoviesCard/__description/movies-card__description.css);
 @import url(./components/MoviesCard/__title/movies-card__title.css);
