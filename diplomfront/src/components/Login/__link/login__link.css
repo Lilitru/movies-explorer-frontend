@@ -8,6 +8,9 @@
   text-decoration: none;
   align-self: center;
 }
+.login__link:hover{
+  opacity: 0.8;
+}
 @media screen and (max-width: 767px) {
   .login__link {
     font-size: 12px;

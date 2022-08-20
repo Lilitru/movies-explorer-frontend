@@ -7,17 +7,17 @@ function Portfolio() {
             <h2 className="portfolio__title">Портфолио</h2>
             <ul className="portfolio__container">
                 <li>
-                    <a className="portfolio__link" href="#">Статичный сайт
+                    <a className="portfolio__link" href="https://github.com/Lilitru/mesto-react" target="blank">Статичный сайт
                         <img className="portfolio__img" src={portfolio__link} alt="Стрелка" />
                     </a>
                 </li>
                 <li>
-                    <a className="portfolio__link" href="#">Адаптивный сайт
+                    <a className="portfolio__link" href="https://github.com/Lilitru/mesto-react" target="blank">Адаптивный сайт
                         <img className="portfolio__img" src={portfolio__link} alt="Стрелка" />
                     </a>
                 </li>
                 <li>
-                    <a className="portfolio__link" href="#">Одностраничное приложение
+                    <a className="portfolio__link" href="https://github.com/Lilitru/mesto-react" target="blank">Одностраничное приложение
                         <img className="portfolio__img" src={portfolio__link} alt="Стрелка" />
                     </a>
                 </li>

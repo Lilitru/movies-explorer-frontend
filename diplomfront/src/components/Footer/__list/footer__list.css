@@ -8,7 +8,7 @@
   cursor: pointer;
 }
 
-.footer__list:first-child {
+/* .footer__list:first-child {
   margin: 0 761px 0 0;
   cursor: none;
 }
@@ -16,13 +16,15 @@
   .footer__list:first-child {
     margin: 0 329px 0 0;
   }
-}
+} */
 @media screen and (max-width: 767px) {
-  .footer__list:first-child {
+  /* .footer__list:first-child {
     margin: 0;
     order: 1;
-  }
-  .footer{
+  } */
+  .footer__list{
     margin: 0 0 12px 0;
+    font-size: 12px;
+    line-height: 15px;
   }
 }

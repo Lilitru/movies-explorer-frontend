@@ -12,6 +12,10 @@
     background-color: transparent;
     margin: 50px 0 80px 0;
     padding: 11px 50px 9px 50px;
+    align-self: center;
+}
+.movies__btn:hover{
+    opacity: 0.8;
 }
 @media screen and (max-width: 767px) {
     .movies__btn {

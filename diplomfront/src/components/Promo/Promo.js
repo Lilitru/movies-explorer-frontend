@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from 'react-router-dom';
-import promoImg from '../../images/text__promo.png';
+import promoImg from '../../images/text__promo.svg';
 
 function Promo() {
     return (

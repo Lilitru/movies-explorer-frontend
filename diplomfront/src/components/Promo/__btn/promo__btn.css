@@ -16,6 +16,9 @@
   white-space: nowrap;
   text-decoration: none;
 }
+.promo__btn:hover{
+  opacity: 0.8;
+}
 @media screen and (max-width: 767px) {
   .promo__btn {
     margin: 0;

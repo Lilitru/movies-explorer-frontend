@@ -11,6 +11,9 @@
   display: flex;
   flex-direction: row;
 }
+.header__profile:hover {
+  opacity: 0.3;
+}
 @media screen and (max-width: 1024px) {
   .header__profile {
    display: none;

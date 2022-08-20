@@ -17,3 +17,6 @@
     background-repeat: no-repeat;
     background-position: center;
 }
+.movies-card__delete_active:hover{
+    opacity: 0.8;
+}

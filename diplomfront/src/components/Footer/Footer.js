@@ -7,24 +7,26 @@ function Footer() {
 
   const location = useLocation();
 
-  const visibleRoutes = ['/','/movies', '/saved-movies']; 
+  const visibleRoutes = ['/', '/movies', '/saved-movies'];
 
-    return (
-      <>
-      {visibleRoutes.includes(location.pathname) ? 
+  return (
+    <>
+      {visibleRoutes.includes(location.pathname) ?
         <footer className="footer">
           <h3 className="footer__title">Учебный проект Яндекс.Практикум х BeatFilm.</h3>
-          <ul className='footer__container'>
-            <li className='footer__list'>© 2022</li>
-            <li className='footer__list'>Яндекс.Практикум</li>
-            <li className='footer__list'>Github</li>
-            <li className='footer__list'>Facebook</li>
-          </ul>
+          <div className='footer__nav'>
+            <p className='footer__caption'>© 2022</p>
+            <ul className='footer__container'>
+              <li className='footer__list'>Яндекс.Практикум</li>
+              <li className='footer__list'>Github</li>
+              <li className='footer__list'>Facebook</li>
+            </ul>
+          </div>
         </footer>
-                  :''
-                }
-              </>
-    )
+        : ''
+      }
+    </>
+  )
 }
 
 export default Footer;

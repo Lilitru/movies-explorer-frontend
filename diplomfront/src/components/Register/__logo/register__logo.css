@@ -1,9 +1,12 @@
-.register__logo{
-    max-width: 38px;
-    margin: 0 358px 0 0 ;
+.register__logo {
+  max-width: 38px;
+  margin: 0 358px 0 0;
+}
+.register__logo:hover {
+  opacity: 0.8;
 }
 @media screen and (max-width: 767px) {
-    .register__logo {
-      margin:0;
-    }
+  .register__logo {
+    margin: 0;
   }
+}

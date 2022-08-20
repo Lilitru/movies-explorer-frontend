@@ -9,4 +9,9 @@
   border-radius: 48px;
   width: 58px;
   border: none;
+  padding: 8px 10px 8px 10px;
+}
+.search-form__btn:hover{
+  opacity: 0.4;
+  cursor: pointer;
 }

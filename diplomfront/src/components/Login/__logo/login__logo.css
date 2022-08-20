@@ -2,6 +2,9 @@
     max-width: 38px;
     margin: 0 358px 0 0 ;
 }
+.login__logo:hover{
+  opacity: 0.8;
+}
 @media screen and (max-width: 767px) {
     .login__logo {
       margin:0;

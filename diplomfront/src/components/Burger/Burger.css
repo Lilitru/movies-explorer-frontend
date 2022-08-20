@@ -1,5 +1,4 @@
-
-.nav {
+.burger {
   height: 44px;
   width: 100%;
   background-color: inherit;
@@ -10,70 +9,70 @@
   margin: 15px 0 15px 0;
   display: none;
 }
-
 .burger-btn {
+  width: 28px;
+  height: 30px;
+  margin: 0;
+  position: relative;
+  cursor: pointer;
+}
+.burger-btn:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 28px;
+  background-color: black;
+  height: 3px;
+}
+.burger-btn__span {
+  content: "";
+  position: absolute;
+  top: 13px;
+  width: 28px;
+  background-color: black;
+  height: 3px;
+}
+.burger-btn:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 28px;
+  background-color: black;
+  height: 3px;
+}
+@media screen and (max-width: 1024px) {
+  .burger {
+    display: flex;
+  }
+  .burger-btn__active {
     width: 28px;
     height: 30px;
-    margin:0;
+    margin: 0;
     position: relative;
     cursor: pointer;
-}
-
-.burger-btn:before {
-    content: '';
+    z-index: 2;
+  }
+  .burger-btn__active:before {
+    content: "";
     position: absolute;
     top: 0;
     width: 28px;
     background-color: black;
     height: 3px;
-}
-.burger-btn__span{
-    content: '';
-    position: absolute;
-    top: 13px;
-    width: 28px;
-    background-color: black;
-    height: 3px;
-}
-.burger-btn:after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    width: 28px;
-    background-color: black;
-    height: 3px;
-}
-@media screen and (max-width: 1024px) {
-    .nav {
-      display: flex;
-    }
+    top: 50%;
+    transform: translate(-50%, 0%) rotate(45deg);
   }
-
-/* 
-.burger-btn__active {
-    width: 28px;
-    height: 30px;
-    margin:0;
-    position: relative;
-    cursor: pointer;
-}
-
-.burger-btn__active:before {
-   display: none;
-}
-.burger-btn__span_active{
-    content: '';
+  .burger-btn__active:after {
+    content: "";
     position: absolute;
-    top: 13px;
+    top: 0;
     width: 28px;
     background-color: black;
     height: 3px;
+    top: 50%;
+    transform: translate(-50%, 0%) rotate(135deg);
+  }
+  .burger-btn__span_active {
+    display: none;
+  }
 }
-.burger-btn__active:after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    width: 28px;
-    background-color: black;
-    height: 3px;
-} */

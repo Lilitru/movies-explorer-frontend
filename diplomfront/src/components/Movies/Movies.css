@@ -1,5 +1,7 @@
 .movies{
     margin: 144px 70px 0 70px;
+    display: flex;
+    flex-direction: column;
 }
 @media screen and (max-width: 767px) {
     .movies {

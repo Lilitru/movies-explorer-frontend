@@ -6,14 +6,20 @@ function Burger() {
     const items = [{ value: "Главная", href: '/' },
     { value: "Фильмы", href: '/movies' },
     { value: "Сохраненные фильмы", href: '/saved-movies' },
-    { value: "Аккаунт", href: '/profile' },
     ]
+
+    const burgerButtonClassName = (
+        `burger-btn${menuActive ? '__active' : ''}`
+    );
+    const spanButtonClassName = (
+        `burger-btn__span${menuActive ? '_active' : ''}`
+    );
 
     return (
         <>
-            <nav className="nav">
-                <div className="burger-btn" onClick={() => setMenuActive(!menuActive)}>
-                    <span className="burger-btn__span" />
+            <nav className="burger">
+                <div className={burgerButtonClassName} onClick={() => setMenuActive(!menuActive)}>
+                    <span className={spanButtonClassName} />
                 </div>
             </nav>
             <Navigation active={menuActive} setActive={setMenuActive} header={"BurgerMenu"} items={items} />
