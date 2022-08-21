@@ -1,0 +1,10 @@
+.search-form__span {
+  border-bottom: 1px solid #e8e8e8;
+  margin: 15px 0 29px 0;
+}
+@media screen and (max-width: 767px) {
+  .search-form__span {
+    margin: 9px 0 42px 0;
+  }
+}
+

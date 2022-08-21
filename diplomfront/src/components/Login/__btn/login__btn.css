@@ -1,0 +1,27 @@
+.login__btn {
+  background: #000000;
+  border: 0;
+  border-radius: 3px;
+  color: #ffffff;
+  font-family: "Inter", Arial, sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  margin: 197px 0 0;
+  min-height: 45px;
+  min-width: 396px;
+  padding: 0;
+  text-align: center;
+  cursor: pointer;
+}
+.login__btn:hover{
+  opacity: 0.8;
+}
+@media screen and (max-width: 767px) {
+  .login__btn {
+    min-width: 260px;
+    font-size: 12px;
+    line-height: 15px;
+    margin: 157px 0 0 0;
+  }
+}

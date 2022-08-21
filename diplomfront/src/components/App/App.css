@@ -1,0 +1,16 @@
+.app {
+  text-rendering: optimizeLegibility;
+  align-items: center;
+  min-height: 100vh;
+  width: 100%;
+}
+@media screen and (max-width: 1024px) {
+  .app {
+    max-width: 768px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .app {
+    max-width: 320px;
+  }
+}

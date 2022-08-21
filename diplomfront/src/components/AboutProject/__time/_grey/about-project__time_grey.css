@@ -1,0 +1,15 @@
+.about-project__time_grey{
+    color: #000000;
+    background-color: #F2F2F2;
+    padding: 9px;
+}
+@media screen and (max-width: 1024px) {
+    .about-project__time_grey {
+        padding: 9px;
+    }
+  }
+  @media screen and (max-width: 767px) {
+    .about-project__time_grey {
+        padding: 11px;
+    }
+  }

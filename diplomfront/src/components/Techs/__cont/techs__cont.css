@@ -1,0 +1,26 @@
+.techs__cont {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  font-family: "Inter", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #000000;
+  margin: 0;
+  text-align: center;
+  letter-spacing: -0.04em;
+}
+@media screen and (max-width: 1024px) {
+  .techs__cont {
+    font-size: 12px;
+    line-height: 15px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .techs__cont {
+    display: grid;
+    grid-template-columns: repeat(2,minmax(84px,1fr));
+    gap: 10px;
+  }
+}

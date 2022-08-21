@@ -1,0 +1,15 @@
+.error__subtitle{
+    margin: 5px 0 184px 0;
+    font-family: "Inter", Arial, sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    color: #000000;
+}
+@media screen and (max-width: 767px) {
+    .error__subtitle {
+      font-size: 12px;
+      line-height: 15px;
+      margin: 10px 0 284px 0;
+    }
+  }

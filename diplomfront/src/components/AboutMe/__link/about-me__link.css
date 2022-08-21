@@ -1,0 +1,14 @@
+.about-me__link {
+  font-family: "Inter", Arial, sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  color: #000000;
+  margin: 0 20px 0 0;
+  cursor: pointer;
+}
+@media screen and (max-width: 767px) {
+  .about-me__link {
+    margin: 0 26px 0 0;
+  }
+}

@@ -1,0 +1,23 @@
+.movies-card__btn {
+  border: none;
+  cursor: pointer;
+  height: 21px;
+  position: absolute;
+  right: 14px;
+  top: 14px;
+  width: 72px;
+  font-family: "Inter", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 9px;
+  color: #000000;
+  border-radius: 30px;
+  text-align: center;
+  background: #F9F9F9;
+}
+.movies-card__btn_active{
+  display: none;
+}
+.movies-card__btn:hover{
+  opacity: 0.85;
+}

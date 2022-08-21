@@ -1,0 +1,22 @@
+.movies-card__delete{
+    display: none;
+}
+.movies-card__delete_active{
+    display: block;
+    border: none;
+    counter-reset: none;
+    cursor: pointer;
+    height: 21px;
+    width: 21px;
+    position: absolute;
+    right: 14px;
+    top: 14px;
+    border-radius: 30px;
+    background: #F9F9F9;
+    background-image: url(../../../images/icon__deleteMovie.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.movies-card__delete_active:hover{
+    opacity: 0.8;
+}

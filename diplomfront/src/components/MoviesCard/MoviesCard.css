@@ -1,0 +1,13 @@
+.movies-card{
+    background: #fff;
+    list-style: none;
+    margin: 0;
+    max-width: 360px;
+    padding: 0;
+    position: relative;
+}
+@media screen and (max-width: 767px) {
+    .movies-card {
+     max-width: 300px;
+    }
+  }

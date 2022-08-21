@@ -1,0 +1,6 @@
+.search-form__filter{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    height: 20px;
+}

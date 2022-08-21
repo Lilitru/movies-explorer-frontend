@@ -1,0 +1,21 @@
+.login__link {
+  color: #000000;
+  font-family: "Inter", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  margin: 0 0 0 6px;
+  text-decoration: none;
+  align-self: center;
+}
+.login__link:hover{
+  opacity: 0.8;
+}
+@media screen and (max-width: 767px) {
+  .login__link {
+    font-size: 12px;
+    line-height: 15px;
+    margin: 0 0 0 7px;
+  }
+}
+

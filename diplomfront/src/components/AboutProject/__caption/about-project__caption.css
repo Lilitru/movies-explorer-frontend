@@ -1,0 +1,23 @@
+.about-project__caption {
+  display: flex;
+  justify-content: center;
+  margin: 14px 0 110px 0;
+  font-family: "Inter", Arial, sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  color: #a0a0a0;
+}
+@media screen and (max-width: 1024px) {
+  .about-project__caption {
+    margin: 14px 0 90px 0;
+  }
+}
+@media screen and (max-width: 767px) {
+  .about-project__caption {
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 13px;
+    margin: 10px 0 70px 0;
+  }
+}

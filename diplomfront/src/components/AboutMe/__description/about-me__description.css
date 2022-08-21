@@ -1,0 +1,23 @@
+.about-me__description {
+  font-family: "Inter", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
+  color: #000000;
+  margin: 0 0 99px 0;
+}
+@media screen and (max-width: 1024px) {
+  .about-me__description {
+    font-size: 12px;
+    line-height: 18px;
+    margin: 0 0 87px 0;
+  }
+}
+@media screen and (max-width: 767px) {
+  .about-me__description {
+    font-size: 11px;
+    line-height: 16px;
+    margin: 0 0 40px 0;
+  }
+}
+

@@ -1,0 +1,18 @@
+.about-project__line {
+  display: flex;
+  flex-direction: row;
+}
+.about-project__back {
+  width: 228px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  white-space: nowrap;
+}
+.about-project__front{
+    width: 912px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    white-space: nowrap;
+}

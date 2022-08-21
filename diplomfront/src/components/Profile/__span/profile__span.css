@@ -1,0 +1,10 @@
+.profile__span {
+  border-bottom: 1px solid #e8e8e8;
+  margin: 16px 0 17px 0;
+  width: 410px;
+}
+@media screen and (max-width: 767px) {
+  .profile__span {
+      width: 260px;
+  }
+}
