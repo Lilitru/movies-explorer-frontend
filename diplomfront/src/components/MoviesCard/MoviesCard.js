@@ -16,7 +16,7 @@ function MoviesCard(props) {
     );
 
     return (
-        <li className='movies-card'>
+        <li id="moviesCard" className='movies-card'>
             {location.pathname === '/movies' ?
                 <>
                     <button type="button" className={saveButtonClassName} onClick={() => { props.saveMovie(props.card, props.isSaved) }}>Сохранить</button>
@@ -27,7 +27,7 @@ function MoviesCard(props) {
                 <>
                     <button type="button" className="movies-card__btn movies-card__btn_active">Сохранить</button>
                     <span className="movies-card__span"></span>
-                    <span className='movies-card__delete movies-card__delete_active' onClick={() => { props.saveMovie(props.card, props.isSaved) }}></span>
+                    <span className='movies-card__delete movies-card__delete_active' onClick={() => { props.saveMovie(props.card) }}></span>
                 </>
             }
             {/* <button type="button" className='movies-card__btn'>Сохранить</button> */}

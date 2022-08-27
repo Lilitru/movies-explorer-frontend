@@ -7,13 +7,13 @@ function Profile(props) {
 
     const currentUser = React.useContext(UserContext);
 
-    let { values, handleChange, errors, isValid, resetForm } = useFormWithValidation();
+    let { values, handleChange, errors, isValid, resetForm, setValues } = useFormWithValidation();
 
     React.useEffect(() => {
-        if (values.name === undefined)
-            values.name = currentUser.name;
-        if (values.email === undefined)
-            values.email = currentUser.email;
+        if (!values.name)
+        setValues({...values, 'name': currentUser.name});
+        if (!values.email)
+        setValues({...values, 'email': currentUser.email});
     }, [currentUser, values]);
 
     const profileBtn = (

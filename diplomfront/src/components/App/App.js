@@ -25,7 +25,11 @@ function App() {
 
   let [moviesSearchQuery, setMoviesSearchQuery] = React.useState('');
 
+  let [moviesSearchQueryForSavedMovies, setMoviesSearchQueryForSavedMovies] = React.useState('');
+
   let [onlyShortMovies, setOnlyShortMovies] = React.useState(false);
+
+  let [onlyShortMoviesForSavedMovies, setOnlyShortMoviesForSavedMovies] = React.useState(false);
 
   let [moviesCollection, setMoviesCollection] = React.useState(Array[0]);
 
@@ -39,6 +43,8 @@ function App() {
 
   let [savedUserMovies, setSavedUserMovies] = React.useState(Array[0]);
 
+  let [savedAndFilteredUserMovies, setSavedAndFilteredUserMovies] = React.useState(Array[0]);
+
   function handleRegisterUser(name, password, email) {
     mainApi.signUp(name, password, email).then((signUpUser) => {
       if (signUpUser) {
@@ -51,7 +57,7 @@ function App() {
       });
   }
 
-  function checkToken() {
+  function checkToken(redirectToMovies) {
     const token = localStorage.getItem('token');
     if (token) {
       // здесь будем проверять токен
@@ -60,6 +66,10 @@ function App() {
           setLoggedIn(true);
           setCurrentUser(userCheck);
           localStorage.setItem("user", JSON.stringify(userCheck));
+        })
+        .then(()=>{
+          if(redirectToMovies)
+            history.push('/movies');
         })
         .catch(err => {
           console.log(err); // выведем ошибку в консоль
@@ -72,10 +82,7 @@ function App() {
   }
 
   React.useEffect(() => {
-    checkToken();
-    //setPermissonCheck(true);
-    //    setCheckedFilms(JSON.parse(localStorage.getItem("checkedFilms")));
-    //    setCheckedSaveFilms(JSON.parse(localStorage.getItem("checkedSaveFilms")));
+    checkToken(false);
   }, []);
 
   React.useEffect(() => {
@@ -90,6 +97,7 @@ function App() {
             setCurrentUser(user);
             const savedMovies = saveMovies.filter((movie) => movie.owner === user._id);
             setSavedUserMovies(savedMovies ?? Array[0]);
+            setSavedAndFilteredUserMovies(savedMovies ?? Array[0]);
           })
           .catch((err) => {
             console.log(err);
@@ -100,8 +108,15 @@ function App() {
 
   React.useEffect(() => {
     setMoviesSearchQuery(localStorage.getItem("moviesSearchQuery"));
+    
+    //setMoviesSearchQueryForSavedMovies(localStorage.getItem("moviesSearchQueryForSavedMovies"));
+    
     const onlyShort = JSON.parse(localStorage.getItem("onlyShortMovies"));
     setOnlyShortMovies(onlyShort ?? false);
+
+    // const onlyShortForSavedMovies = JSON.parse(localStorage.getItem("onlyShortMoviesForSavedMovies"));
+    // setOnlyShortMoviesForSavedMovies(onlyShortForSavedMovies ?? false);
+
     const moviesCollectionLocalStorage = JSON.parse(localStorage.getItem("moviesCollection"));
     setMoviesCollection(moviesCollectionLocalStorage ?? Array[0]);
 
@@ -110,13 +125,12 @@ function App() {
     setFilteredMoviesCollection(filteredMoviesCollectionLocalStorage ?? Array[0]);
   }, []);
 
-  // Обновление короткометражек
   React.useEffect(() => {
-    //setShortMovies(JSON.parse(localStorage.getItem("durationMovieShort")));
-    // setShortMoviesSave(
-    //   JSON.parse(localStorage.getItem("durationMovieShortSave"))
-    // );
-  }, []);
+    const filteredSavedUserMovies = filterMovies(savedUserMovies, moviesSearchQueryForSavedMovies, onlyShortMoviesForSavedMovies);
+
+    setSavedAndFilteredUserMovies(filteredSavedUserMovies);
+
+  }, [savedUserMovies]);
 
   function handleLoginUser(email, password) {
     mainApi.signIn(email, password).then((signInUser) => {
@@ -125,8 +139,7 @@ function App() {
       }
     })
       .then(() => {
-        checkToken();
-        history.push('/movies');
+        checkToken(true);
       })
       .catch(err => {
         console.log(err);
@@ -156,11 +169,23 @@ function App() {
       });
   }
 
+  function handleSearchMoviesForSavedMovies(searchQuery, isShortMovies) {
+
+    setPreloaderOn(true);
+    const moviesFilter = filterMovies(savedUserMovies, searchQuery, isShortMovies);
+    setSavedAndFilteredUserMovies(moviesFilter);
+    localStorage.setItem("savedAndFilteredUserMovies", JSON.stringify(moviesFilter));
+    
+    setMoviesApiReturnError(false);
+    setPreloaderOn(false);   
+  }
+
   function filterMovies(movies, searchQuery, isShortMovies) {
+
     return movies
       ? movies.filter((movie) => {
-        return movie.nameRU.toLowerCase().includes(searchQuery.toLowerCase())
-          && checkMoviesLength(movie, isShortMovies);
+        return searchQuery ? movie.nameRU.toLowerCase().includes(searchQuery.toLowerCase())
+          && checkMoviesLength(movie, isShortMovies) : checkMoviesLength(movie, isShortMovies);
       })
       : Array[0];
   }
@@ -181,9 +206,24 @@ function App() {
 
   }
 
+  function checkShortMoviesForSavedMovies(e) {
+    setOnlyShortMoviesForSavedMovies(e.target.checked);
+    localStorage.setItem("onlyShortMoviesForSavedMovies", e.target.checked);
+
+    const moviesFilter = filterMovies(savedUserMovies, moviesSearchQueryForSavedMovies, e.target.checked);
+    setSavedAndFilteredUserMovies(moviesFilter);
+    localStorage.setItem("savedAndFilteredUserMovies", JSON.stringify(moviesFilter));
+  }
+
   function handleSearchQueryChanged(query) {
     setMoviesSearchQuery(query);
     localStorage.setItem("moviesSearchQuery", query);
+  }
+
+  
+  function handleSearchQueryChangedForSavedMovies(query) {
+    setMoviesSearchQueryForSavedMovies(query);
+    localStorage.setItem("moviesSearchQueryForSavedMovies", query);
   }
 
   function handleUpdateUserInfo(name, email) {
@@ -209,15 +249,7 @@ function App() {
 
     if (isSaved) {
       const movieToDelete = savedUserMovies.find((movie) => movie.movieId === card.id);
-
-      mainApi.deleteMovie(movieToDelete._id)
-        .then((movie) => {
-          const newSavedMovies = savedUserMovies.filter((item) => item._id !== movie._id);
-          setSavedUserMovies(newSavedMovies);
-        })
-        .catch(err => {
-          console.log(err);
-        });
+      handleRemoveMovieFromSaved(movieToDelete);
     }
     else {
       mainApi.createMovie(
@@ -239,6 +271,18 @@ function App() {
           console.log(err);
         });;
     }
+  }
+
+  function handleRemoveMovieFromSaved(card){
+    
+    mainApi.deleteMovie(card._id)
+    .then((movie) => {
+      const newSavedMovies = savedUserMovies.filter((item) => item._id !== movie._id);
+      setSavedUserMovies(newSavedMovies);
+    })
+    .catch(err => {
+      console.log(err);
+    });
   }
 
   if (loggedIn === null)
@@ -268,9 +312,16 @@ function App() {
           </ProtectedRoute>
           <ProtectedRoute path="/saved-movies"
             loggedIn={loggedIn}
-            movies={filteredMoviesCollection}
-            savedMovies={savedUserMovies}
-            saveMovie={handleSaveMovie}
+            checkShortMovies={checkShortMoviesForSavedMovies}
+            onSearchQueryChanged={handleSearchQueryChangedForSavedMovies}
+            query={moviesSearchQueryForSavedMovies}
+            onlyShortMovies={onlyShortMoviesForSavedMovies}
+            showPreloader={preloaderOn}
+            onSearchMovies={handleSearchMoviesForSavedMovies}
+            movies={savedAndFilteredUserMovies}
+            moviesApiReturnError={moviesApiReturnError}
+            savedMovies={savedAndFilteredUserMovies}
+            removeMovieFromSaved={handleRemoveMovieFromSaved}
             component={SavedMovies}>
           </ProtectedRoute>
           <ProtectedRoute path="/profile" loggedIn={loggedIn} updateUserInfo={handleUpdateUserInfo} onSignOut={handleSignOut} component={Profile}>
