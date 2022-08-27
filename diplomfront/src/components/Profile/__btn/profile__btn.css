@@ -1,6 +1,6 @@
 .profile__btn {
   border-style: none;
-  margin: 220px 0 0 0;
+  margin: 210px 0 0 0;
   font-family: "Inter", Arial, sans-serif;
   font-weight: 400;
   font-size: 13px;
@@ -8,11 +8,12 @@
   color: #000000;
   max-width: 410px;
   background: inherit;
-  cursor: pointer;
+  opacity: 0.5;
 }
 
-.profile__btn:hover{
-    opacity: 0.5;
+.profile__btn_active{
+  cursor: pointer;
+  opacity: 1;
 }
 
 @media screen and (max-width: 1024px) {

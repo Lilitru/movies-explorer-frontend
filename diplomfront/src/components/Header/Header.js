@@ -3,12 +3,12 @@ import logo from '../../images/logoHeader.svg';
 import icon from '../../images/header__account.svg'
 import { Link, useLocation } from 'react-router-dom';
 
-function Header({ isLoggedIn }) {
+function Header(props) {
 
   const location = useLocation();
 
   const visibleRoutes = ['/', '/movies', '/saved-movies', '/profile'];
-  const filmsRoutes = ['/movies', '/saved-movies', '/profile'];
+  const filmsRoutes = ['/', '/movies', '/saved-movies', '/profile'];
 
   const captureMoviesLink = (
     `header__link header__link${location.pathname === '/movies' ? '_active' : ''}`
@@ -18,11 +18,11 @@ function Header({ isLoggedIn }) {
   );
   return (
     <>
-      {visibleRoutes.includes(location.pathname) ?
+      {visibleRoutes.includes(location.pathname)?
         <header className="header">
           <Link to="/"><img className="header__logo" src={logo} alt="Логотип" />
           </Link>
-          {location.pathname === '/' ?
+          {location.pathname === '/' && ! props.isLoggedIn ?
             <>
               <div className='header__sign'>
                 <Link to="/signup" className='header__reg'>Регистрация</Link>
@@ -31,7 +31,7 @@ function Header({ isLoggedIn }) {
             </>
             : ''}
 
-          {filmsRoutes.includes(location.pathname) ?
+          {filmsRoutes.includes(location.pathname) && props.isLoggedIn ?
             <>
               <div className='header__links'>
                 <Link to="/movies" className={captureMoviesLink}>Фильмы</Link>

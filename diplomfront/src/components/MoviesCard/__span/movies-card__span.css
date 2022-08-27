@@ -5,7 +5,7 @@
     display: block;
     border: none;
     counter-reset: none;
-    cursor: none;
+    cursor: pointer;
     height: 21px;
     width: 21px;
     position: absolute;

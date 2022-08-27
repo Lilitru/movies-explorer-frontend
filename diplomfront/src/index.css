@@ -66,6 +66,7 @@
 
 /* Movies */
 @import url(./components/Movies/Movies.css);
+@import url(./components/Movies/__span/movies__span.css);
 @import url(./components/Movies/__btn/movies__btn.css);
 @import url(./components/SearchForm/SearchForm.css);
 @import url(./components/SearchForm/__container/search-form__container.css);
@@ -74,24 +75,31 @@
 @import url(./components/SearchForm/__input/search-form__input.css);
 @import url(./components/SearchForm/__btn/search-form__btn.css);
 @import url(./components/SearchForm/__span/search-form__span.css);
-@import url(./components/SearchForm/__filter/search-form__filter.css);
+/* @import url(./components/SearchForm/__filter/search-form__filter.css);
 @import url(./components/SearchForm/__check/search-form__check.css);
 @import url(./components/SearchForm/__radio/search-form__radio.css);
 @import url(./components/SearchForm/__slider/search-form__slider.css);
-@import url(./components/SearchForm/__text/search-form__text.css);
+@import url(./components/SearchForm/__text/search-form__text.css); */
+@import url(./components/MovieFilter/MovieFilter.css);
+@import url(./components/MovieFilter/__filter/movie-filter__filter.css);
+@import url(./components/MovieFilter/__check/movie-filter__check.css);
+@import url(./components/MovieFilter/__radio/movie-filter__radio.css);
+@import url(./components/MovieFilter/__slider/movie-filter__slider.css);
+@import url(./components/MovieFilter/__text/movie-filter__text.css);
 @import url(./components/MoviesCardList/MoviesCardList.css);
 @import url(./components/MoviesCardList/__lists/movies-card-list__lists.css);
 @import url(./components/MoviesCard/MoviesCard.css);
 @import url(./components/MoviesCard/__btn/movies-card__btn.css);
 @import url(./components/MoviesCard/__span/movies-card__span.css);
 @import url(./components/MoviesCard/__delete/movies-card__delete.css);
+@import url(./components/MoviesCard/__link/movies-card__link.css);
 @import url(./components/MoviesCard/__img/movies-card__img.css);
 @import url(./components/MoviesCard/__description/movies-card__description.css);
 @import url(./components/MoviesCard/__title/movies-card__title.css);
 @import url(./components/MoviesCard/__time/movies-card__time.css);
 
 /* Preloader */
-/* @import url(./components/Preloader/Preloader.css); */
+@import url(./components/Preloader/Preloader.css);
 
 /* Profile */
 @import url(./components/Profile/Profile.css);
@@ -110,6 +118,7 @@
 @import url(./components/Register/__title/register__title.css);
 @import url(./components/Register/__form/register__form.css);
 @import url(./components/Register/__input/register__input.css);
+@import url(./components/Register/__error/register__error.css);
 @import url(./components/Register/__btn/register__btn.css);
 @import url(./components/Register/__text/register__text.css);
 @import url(./components/Register/__link/register__link.css);
