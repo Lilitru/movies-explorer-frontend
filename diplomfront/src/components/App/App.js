@@ -14,45 +14,53 @@ import Error from '../Error/Error';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import mainApi from '../../utils/MainApi';
 import moviesApi from '../../utils/MoviesApi';
+import InfoTooltip from '../InfoTooltip/InfoTooltip';
 
 function App() {
 
   const history = useHistory();
 
-  let [loggedIn, setLoggedIn] = React.useState(null);
+  const [loggedIn, setLoggedIn] = React.useState(null);
 
-  let [preloaderOn, setPreloaderOn] = React.useState(false);
+  const [preloaderOn, setPreloaderOn] = React.useState(false);
 
-  let [moviesSearchQuery, setMoviesSearchQuery] = React.useState('');
+  const [moviesSearchQuery, setMoviesSearchQuery] = React.useState('');
 
-  let [moviesSearchQueryForSavedMovies, setMoviesSearchQueryForSavedMovies] = React.useState('');
+  const [moviesSearchQueryForSavedMovies, setMoviesSearchQueryForSavedMovies] = React.useState('');
 
-  let [onlyShortMovies, setOnlyShortMovies] = React.useState(false);
+  const [onlyShortMovies, setOnlyShortMovies] = React.useState(false);
 
-  let [onlyShortMoviesForSavedMovies, setOnlyShortMoviesForSavedMovies] = React.useState(false);
+  const [onlyShortMoviesForSavedMovies, setOnlyShortMoviesForSavedMovies] = React.useState(false);
 
-  let [moviesCollection, setMoviesCollection] = React.useState(Array[0]);
+  const [moviesCollection, setMoviesCollection] = React.useState(Array[0]);
 
-  let [regFailedError, setRegFailedError] = React.useState(null);
+  const [regFailedError, setRegFailedError] = React.useState(null);
 
-  let [currentUser, setCurrentUser] = React.useState({});
+  const [currentUser, setCurrentUser] = React.useState({});
 
-  let [moviesApiReturnError, setMoviesApiReturnError] = React.useState(false);
+  const [moviesApiReturnError, setMoviesApiReturnError] = React.useState(false);
 
-  let [filteredMoviesCollection, setFilteredMoviesCollection] = React.useState(Array[0]);
+  const [filteredMoviesCollection, setFilteredMoviesCollection] = React.useState(Array[0]);
 
-  let [savedUserMovies, setSavedUserMovies] = React.useState(Array[0]);
+  const [savedUserMovies, setSavedUserMovies] = React.useState(Array[0]);
 
-  let [savedAndFilteredUserMovies, setSavedAndFilteredUserMovies] = React.useState(Array[0]);
+  const [savedAndFilteredUserMovies, setSavedAndFilteredUserMovies] = React.useState(Array[0]);
+
+  const [isInfoTooltipOpen, setIsInfoTooltipOpen] = React.useState(false);
+
+  let [infoToolTipOk, setInfoToolTipOk] = React.useState(false);
 
   function handleRegisterUser(name, password, email) {
     mainApi.signUp(name, password, email).then((signUpUser) => {
       if (signUpUser) {
         handleLoginUser(email, password);
       }
+      else{
+        showInfoTooltipFail();
+      }
     })
       .catch(err => {
-        setRegFailedError(err);
+        setRegFailedError('Что то пошло не так');
         console.log(err);
       });
   }
@@ -63,17 +71,25 @@ function App() {
       // здесь будем проверять токен
       mainApi.getUserInfo(token)
         .then((userCheck) => {
-          setLoggedIn(true);
-          setCurrentUser(userCheck);
-          localStorage.setItem("user", JSON.stringify(userCheck));
+          if (!userCheck)
+          {
+            localStorage.removeItem('token');
+            history.push('/signin');
+          }
+          else {
+            setLoggedIn(true);
+            setCurrentUser(userCheck);
+            localStorage.setItem("user", JSON.stringify(userCheck));
+          }
         })
-        .then(()=>{
-          if(redirectToMovies)
+        .then(() => {
+          if (redirectToMovies)
             history.push('/movies');
         })
         .catch(err => {
           console.log(err); // выведем ошибку в консоль
           localStorage.removeItem('token');
+          history.push('/signin');
         });
     }
     else {
@@ -108,17 +124,17 @@ function App() {
 
   React.useEffect(() => {
     setMoviesSearchQuery(localStorage.getItem("moviesSearchQuery"));
-    
+
     //setMoviesSearchQueryForSavedMovies(localStorage.getItem("moviesSearchQueryForSavedMovies"));
-    
+
     const onlyShort = JSON.parse(localStorage.getItem("onlyShortMovies"));
     setOnlyShortMovies(onlyShort ?? false);
 
     // const onlyShortForSavedMovies = JSON.parse(localStorage.getItem("onlyShortMoviesForSavedMovies"));
     // setOnlyShortMoviesForSavedMovies(onlyShortForSavedMovies ?? false);
 
-    const moviesCollectionLocalStorage = JSON.parse(localStorage.getItem("moviesCollection"));
-    setMoviesCollection(moviesCollectionLocalStorage ?? Array[0]);
+    //const moviesCollectionLocalStorage = JSON.parse(localStorage.getItem("moviesCollection"));
+    //setMoviesCollection(moviesCollectionLocalStorage ?? Array[0]);
 
 
     const filteredMoviesCollectionLocalStorage = JSON.parse(localStorage.getItem("filteredMoviesCollection"));
@@ -137,11 +153,15 @@ function App() {
       if (signInUser) {
         localStorage.setItem('token', signInUser.token);
       }
+      else{
+        showInfoTooltipFail();
+      }
     })
       .then(() => {
         checkToken(true);
       })
       .catch(err => {
+        showInfoTooltipFail();
         console.log(err);
       });
   }
@@ -150,23 +170,35 @@ function App() {
 
     setPreloaderOn(true);
 
-    moviesApi.getMovies().then((movies) => {
-      setMoviesCollection(movies);
-      localStorage.setItem("moviesCollection", JSON.stringify(movies));
+    if (moviesCollection && moviesCollection.length > 0) {
 
-      const moviesFilter = filterMovies(movies, searchQuery, isShortMovies);
+      setPreloaderOn(false);
+      const moviesFilter = filterMovies(moviesCollection, searchQuery, isShortMovies);
 
       setFilteredMoviesCollection(moviesFilter);
       localStorage.setItem("filteredMoviesCollection", JSON.stringify(moviesFilter));
       setMoviesApiReturnError(false);
-    })
-      .catch(err => {
-        console.log(err);
-        setMoviesApiReturnError(true);
+
+    }
+    else {
+      moviesApi.getMovies().then((movies) => {
+        setMoviesCollection(movies);
+        localStorage.setItem("moviesCollection", JSON.stringify(movies));
+
+        const moviesFilter = filterMovies(movies, searchQuery, isShortMovies);
+
+        setFilteredMoviesCollection(moviesFilter);
+        localStorage.setItem("filteredMoviesCollection", JSON.stringify(moviesFilter));
+        setMoviesApiReturnError(false);
       })
-      .finally(() => {
-        setPreloaderOn(false);
-      });
+        .catch(err => {
+          console.log(err);
+          setMoviesApiReturnError(true);
+        })
+        .finally(() => {
+          setPreloaderOn(false);
+        });
+    }
   }
 
   function handleSearchMoviesForSavedMovies(searchQuery, isShortMovies) {
@@ -175,9 +207,9 @@ function App() {
     const moviesFilter = filterMovies(savedUserMovies, searchQuery, isShortMovies);
     setSavedAndFilteredUserMovies(moviesFilter);
     localStorage.setItem("savedAndFilteredUserMovies", JSON.stringify(moviesFilter));
-    
+
     setMoviesApiReturnError(false);
-    setPreloaderOn(false);   
+    setPreloaderOn(false);
   }
 
   function filterMovies(movies, searchQuery, isShortMovies) {
@@ -220,7 +252,7 @@ function App() {
     localStorage.setItem("moviesSearchQuery", query);
   }
 
-  
+
   function handleSearchQueryChangedForSavedMovies(query) {
     setMoviesSearchQueryForSavedMovies(query);
     localStorage.setItem("moviesSearchQueryForSavedMovies", query);
@@ -230,6 +262,7 @@ function App() {
     mainApi.updateUserInfo(name, email)
       .then((user) => {
         setCurrentUser(user);
+        showInfoTooltipOk();
       })
       .catch(err => {
         console.log(err);
@@ -241,7 +274,7 @@ function App() {
       setLoggedIn(false);
       localStorage.removeItem('token');
       setCurrentUser({});
-      history.push('/signin');
+      history.push('/');
     }
   }
 
@@ -253,17 +286,17 @@ function App() {
     }
     else {
       mainApi.createMovie(
-        card.country,
-        card.director,
-        card.duration,
-        card.year,
-        card.description,
+        card.country || '  ',
+        card.director || '  ',
+        card.duration || 0,
+        card.year || '  ',
+        card.description || '',
         `${moviesApi.getImagesBaseUrl()}${card.image.url}`,
         card.trailerLink,
         `${moviesApi.getImagesBaseUrl()}${card.image.formats.thumbnail.url}`,
         card.id,
-        card.nameRU,
-        card.nameEN
+        card.nameRU || '  ',
+        card.nameEN || '  '
       ).then((movie) => {
         setSavedUserMovies([...savedUserMovies, movie]);
       })
@@ -273,16 +306,30 @@ function App() {
     }
   }
 
-  function handleRemoveMovieFromSaved(card){
-    
+  function handleRemoveMovieFromSaved(card) {
+
     mainApi.deleteMovie(card._id)
-    .then((movie) => {
-      const newSavedMovies = savedUserMovies.filter((item) => item._id !== movie._id);
-      setSavedUserMovies(newSavedMovies);
-    })
-    .catch(err => {
-      console.log(err);
-    });
+      .then((movie) => {
+        const newSavedMovies = savedUserMovies.filter((item) => item._id !== movie._id);
+        setSavedUserMovies(newSavedMovies);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
+
+  function closeTooltip() {
+    setIsInfoTooltipOpen(false);
+  }
+
+  function showInfoTooltipOk() {
+    setInfoToolTipOk(true);
+    setIsInfoTooltipOpen(true);
+  }
+
+  function showInfoTooltipFail() {
+    setInfoToolTipOk(false);
+    setIsInfoTooltipOpen(true);
   }
 
   if (loggedIn === null)
@@ -337,6 +384,10 @@ function App() {
           </Route>
         </Switch>
         <Footer />
+        <InfoTooltip
+          isOpen={isInfoTooltipOpen}
+          onClose={closeTooltip}
+          ok={infoToolTipOk} />
       </div>
     </UserContext.Provider>
   );

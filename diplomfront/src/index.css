@@ -73,6 +73,7 @@
 @import url(./components/SearchForm/__search/search-form__search.css);
 @import url(./components/SearchForm/__img/search-form__img.css);
 @import url(./components/SearchForm/__input/search-form__input.css);
+@import url(./components/SearchForm/__error/film__error.css);
 @import url(./components/SearchForm/__btn/search-form__btn.css);
 @import url(./components/SearchForm/__span/search-form__span.css);
 /* @import url(./components/SearchForm/__filter/search-form__filter.css);
@@ -122,6 +123,16 @@
 @import url(./components/Register/__btn/register__btn.css);
 @import url(./components/Register/__text/register__text.css);
 @import url(./components/Register/__link/register__link.css);
+
+/*InfoTooltip*/
+@import url(./components/InfoTooltip/popup/popup.css);
+@import url(./components/InfoTooltip/popup/_image/popup_image.css);
+@import url(./components/InfoTooltip/popup/_opened/popup_opened.css);
+@import url(./components/InfoTooltip/popup/__cont/popup__cont.css);
+@import url(./components/InfoTooltip/popup/__close/popup__close.css);
+@import url(./components/InfoTooltip/tooltip/tooltip.css);
+@import url(./components/InfoTooltip/tooltip/__img/tooltip__img.css);
+@import url(./components/InfoTooltip/tooltip/__title/tooltip__title.css);
 
 /* Login */
 @import url(./components/Login/Login.css);

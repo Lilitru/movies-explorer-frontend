@@ -15,6 +15,12 @@ function MoviesCard(props) {
         `movies-card__span${props.isSaved ? '_active' : ''}`
     );
 
+    function timeToHours(mins) {
+        let hours = Math.trunc(mins / 60);
+        let minutes = mins % 60;
+        return hours + "ч " + minutes + "м";
+      }
+
     return (
         <li id="moviesCard" className='movies-card'>
             {location.pathname === '/movies' ?
@@ -36,7 +42,7 @@ function MoviesCard(props) {
             </a>
             <div className='movies-card__description'>
                 <h3 className='movies-card__title'>{props.card.nameRU}</h3>
-                <p className='movies-card__time'>{props.card.duration}</p>
+                <p className='movies-card__time'>{timeToHours(props.card.duration)}</p>
             </div>
         </li>
     )

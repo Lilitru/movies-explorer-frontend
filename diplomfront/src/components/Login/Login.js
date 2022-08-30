@@ -29,7 +29,7 @@ function Login(props) {
                             </Link>
                             <h2 className="login__title">Рады видеть!</h2>
                             <form name="loginUser" className="login__form" onReset={resetForm} onSubmit={handleSubmit}>
-                                <input onChange={handleChange} name="email" type="text" value={values.email} className="login__input" placeholder="E-mail" required pattern='([A-z0-9_.-]{1,})@([A-z0-9_.-]{1,}).([A-z]{2,8})' />
+                                <input onChange={handleChange} name="email" type="text" value={values.email} className="login__input" placeholder="E-mail" required pattern='(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))' />
                                 {errors.email && <span id="email-error" className="register__error" >{errors.email}</span>}
                                 <input name="password" onChange={handleChange} value={values.password} type="password" className="login__input" placeholder="Пароль" required />
                                 {errors.password && <span id="password-error" className="register__error" >{errors.password}</span>}

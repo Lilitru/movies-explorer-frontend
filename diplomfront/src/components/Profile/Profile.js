@@ -9,15 +9,23 @@ function Profile(props) {
 
     let { values, handleChange, errors, isValid, resetForm, setValues } = useFormWithValidation();
 
+    const [dataIsNotEqual, setDataIsNotEqual] = React.useState(true);
+
     React.useEffect(() => {
         if (!values.name)
-        setValues({...values, 'name': currentUser.name});
+            setValues({ ...values, 'name': currentUser.name });
         if (!values.email)
-        setValues({...values, 'email': currentUser.email});
+            setValues({ ...values, 'email': currentUser.email });
+
+        if (values.email && values.email === currentUser.email && values.name && values.name === currentUser.name)
+            setDataIsNotEqual(false);
+        else
+            setDataIsNotEqual(true);
+
     }, [currentUser, values]);
 
     const profileBtn = (
-        `profile__btn profile__btn${isValid ? '_active' : ''}`
+        `profile__btn profile__btn${(isValid && dataIsNotEqual) ? '_active' : ''}`
     );
 
     function handleSubmit(e) {
