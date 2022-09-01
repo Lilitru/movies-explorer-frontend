@@ -7,7 +7,7 @@ function Profile(props) {
 
     const currentUser = React.useContext(UserContext);
 
-    let { values, handleChange, errors, isValid, resetForm, setValues } = useFormWithValidation();
+    const { values, handleChange, errors, isValid, resetForm, setValues } = useFormWithValidation();
 
     const [dataIsNotEqual, setDataIsNotEqual] = React.useState(true);
 

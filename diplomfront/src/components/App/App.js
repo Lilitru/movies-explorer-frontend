@@ -24,14 +24,6 @@ function App() {
 
   const [preloaderOn, setPreloaderOn] = React.useState(false);
 
-  const [moviesSearchQuery, setMoviesSearchQuery] = React.useState('');
-
-  const [moviesSearchQueryForSavedMovies, setMoviesSearchQueryForSavedMovies] = React.useState('');
-
-  const [onlyShortMovies, setOnlyShortMovies] = React.useState(false);
-
-  const [onlyShortMoviesForSavedMovies, setOnlyShortMoviesForSavedMovies] = React.useState(false);
-
   const [moviesCollection, setMoviesCollection] = React.useState(Array[0]);
 
   const [regFailedError, setRegFailedError] = React.useState(null);
@@ -48,7 +40,7 @@ function App() {
 
   const [isInfoTooltipOpen, setIsInfoTooltipOpen] = React.useState(false);
 
-  let [infoToolTipOk, setInfoToolTipOk] = React.useState(false);
+  const [infoToolTipOk, setInfoToolTipOk] = React.useState(false);
 
   function handleRegisterUser(name, password, email) {
     mainApi.signUp(name, password, email).then((signUpUser) => {
@@ -69,7 +61,7 @@ function App() {
     const token = localStorage.getItem('token');
     if (token) {
       // здесь будем проверять токен
-      mainApi.getUserInfo(token)
+      mainApi.getUserInfo()
         .then((userCheck) => {
           if (!userCheck)
           {
@@ -123,30 +115,12 @@ function App() {
   }, [loggedIn]);
 
   React.useEffect(() => {
-    setMoviesSearchQuery(localStorage.getItem("moviesSearchQuery"));
-
-    //setMoviesSearchQueryForSavedMovies(localStorage.getItem("moviesSearchQueryForSavedMovies"));
-
-    const onlyShort = JSON.parse(localStorage.getItem("onlyShortMovies"));
-    setOnlyShortMovies(onlyShort ?? false);
-
-    // const onlyShortForSavedMovies = JSON.parse(localStorage.getItem("onlyShortMoviesForSavedMovies"));
-    // setOnlyShortMoviesForSavedMovies(onlyShortForSavedMovies ?? false);
-
-    //const moviesCollectionLocalStorage = JSON.parse(localStorage.getItem("moviesCollection"));
-    //setMoviesCollection(moviesCollectionLocalStorage ?? Array[0]);
-
-
+    const mc = JSON.parse(localStorage.getItem("moviesCollection"));
+    if(mc)
+      setMoviesCollection(mc);
     const filteredMoviesCollectionLocalStorage = JSON.parse(localStorage.getItem("filteredMoviesCollection"));
     setFilteredMoviesCollection(filteredMoviesCollectionLocalStorage ?? Array[0]);
   }, []);
-
-  React.useEffect(() => {
-    const filteredSavedUserMovies = filterMovies(savedUserMovies, moviesSearchQueryForSavedMovies, onlyShortMoviesForSavedMovies);
-
-    setSavedAndFilteredUserMovies(filteredSavedUserMovies);
-
-  }, [savedUserMovies]);
 
   function handleLoginUser(email, password) {
     mainApi.signIn(email, password).then((signInUser) => {
@@ -206,7 +180,6 @@ function App() {
     setPreloaderOn(true);
     const moviesFilter = filterMovies(savedUserMovies, searchQuery, isShortMovies);
     setSavedAndFilteredUserMovies(moviesFilter);
-    localStorage.setItem("savedAndFilteredUserMovies", JSON.stringify(moviesFilter));
 
     setMoviesApiReturnError(false);
     setPreloaderOn(false);
@@ -226,36 +199,6 @@ function App() {
     if (!needShortOnly)
       return true;
     return movie.duration <= 40;
-  }
-
-  function checkShortMovies(e) {
-    setOnlyShortMovies(e.target.checked);
-    localStorage.setItem("onlyShortMovies", e.target.checked);
-
-    const moviesFilter = filterMovies(moviesCollection, moviesSearchQuery, e.target.checked);
-    setFilteredMoviesCollection(moviesFilter);
-    localStorage.setItem("filteredMoviesCollection", JSON.stringify(moviesFilter));
-
-  }
-
-  function checkShortMoviesForSavedMovies(e) {
-    setOnlyShortMoviesForSavedMovies(e.target.checked);
-    localStorage.setItem("onlyShortMoviesForSavedMovies", e.target.checked);
-
-    const moviesFilter = filterMovies(savedUserMovies, moviesSearchQueryForSavedMovies, e.target.checked);
-    setSavedAndFilteredUserMovies(moviesFilter);
-    localStorage.setItem("savedAndFilteredUserMovies", JSON.stringify(moviesFilter));
-  }
-
-  function handleSearchQueryChanged(query) {
-    setMoviesSearchQuery(query);
-    localStorage.setItem("moviesSearchQuery", query);
-  }
-
-
-  function handleSearchQueryChangedForSavedMovies(query) {
-    setMoviesSearchQueryForSavedMovies(query);
-    localStorage.setItem("moviesSearchQueryForSavedMovies", query);
   }
 
   function handleUpdateUserInfo(name, email) {
@@ -312,6 +255,8 @@ function App() {
       .then((movie) => {
         const newSavedMovies = savedUserMovies.filter((item) => item._id !== movie._id);
         setSavedUserMovies(newSavedMovies);
+        const newFilteredMovies = savedAndFilteredUserMovies.filter((item) => item._id !== movie._id);
+        setSavedAndFilteredUserMovies(newFilteredMovies);
       })
       .catch(err => {
         console.log(err);
@@ -345,10 +290,6 @@ function App() {
           </Route>
           <ProtectedRoute path="/movies"
             loggedIn={loggedIn}
-            checkShortMovies={checkShortMovies}
-            onSearchQueryChanged={handleSearchQueryChanged}
-            query={moviesSearchQuery}
-            onlyShortMovies={onlyShortMovies}
             movies={filteredMoviesCollection}
             savedMovies={savedUserMovies}
             showPreloader={preloaderOn}
@@ -359,16 +300,12 @@ function App() {
           </ProtectedRoute>
           <ProtectedRoute path="/saved-movies"
             loggedIn={loggedIn}
-            checkShortMovies={checkShortMoviesForSavedMovies}
-            onSearchQueryChanged={handleSearchQueryChangedForSavedMovies}
-            query={moviesSearchQueryForSavedMovies}
-            onlyShortMovies={onlyShortMoviesForSavedMovies}
             showPreloader={preloaderOn}
             onSearchMovies={handleSearchMoviesForSavedMovies}
-            movies={savedAndFilteredUserMovies}
             moviesApiReturnError={moviesApiReturnError}
             savedMovies={savedAndFilteredUserMovies}
             removeMovieFromSaved={handleRemoveMovieFromSaved}
+            saveFormState={false}
             component={SavedMovies}>
           </ProtectedRoute>
           <ProtectedRoute path="/profile" loggedIn={loggedIn} updateUserInfo={handleUpdateUserInfo} onSignOut={handleSignOut} component={Profile}>

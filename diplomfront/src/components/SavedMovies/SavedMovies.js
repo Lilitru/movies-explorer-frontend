@@ -9,14 +9,11 @@ function SavedMovies(props) {
     <>
       <Burger />
       <section className="movies">
-        <SearchForm 
-        checkShortMovies={props.checkShortMovies} 
-        searchQuery={props.query} 
-        isShortMovies={props.onlyShortMovies} 
+        <SearchForm
+        saveFormState={props.saveFormState}
         onSearchMovies={props.onSearchMovies} 
-        onSearchQueryChanged={props.onSearchQueryChanged} 
         />
-        {props.showPreloader ? <Preloader /> : props.movies !== undefined && props.movies.length === 0 && <p className='movies__span'>Ничего не найдено</p>}
+        {props.showPreloader ? <Preloader /> : props.savedMovies !== undefined && props.savedMovies.length === 0 && <p className='movies__span'>Ничего не найдено</p>}
         {
           props.moviesApiReturnError ? <p className='movies__span'>Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте еще раз.</p> :
             <>

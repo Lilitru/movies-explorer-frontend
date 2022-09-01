@@ -12,50 +12,73 @@ function SearchForm(props) {
 
   const filmValidationClass = filmQueryIsValid === false ? 'film__error-active' : 'film__error';
 
-  React.useEffect(() => {
-    setSearchQueryString(props.searchQuery);
-    setShortMoviesOnly(props.isShortMovies);
-  }, [props.searchQuery, props.isShortMovies]);
+  React.useEffect(()=>{
+    if(!props.saveFormState)
+      props.onSearchMovies(searchQueryString, shortMoviesOnly);
+  },[props.saveFormState]);
 
+  React.useEffect(() => {
+      
+    if(props.saveFormState)
+    {
+      setSearchQueryString(localStorage.getItem("moviesSearchQuery") ?? '');
+      setShortMoviesOnly(JSON.parse(localStorage.getItem("onlyShortMovies")) ?? false);
+    }
+    else{
+      setShortMoviesOnly(false);
+    }
+
+  }, [props.saveFormState]);
 
   function handleSubmit(e) {
     // Запрещаем браузеру переходить по адресу формы
     e.preventDefault();
-    
-    if (!searchQueryString || searchQueryString.length === 0)
-    {
+
+    if (!searchQueryString || searchQueryString.length === 0) {
       setFilmQueryIsValid(false);
       return;
     }
+    
     // Передаём значения управляемых компонентов во внешний обработчик
     props.onSearchMovies(searchQueryString, shortMoviesOnly);
   }
 
   function handleChangeQuery(e) {
 
-    if (!e.target.value || e.target.value.length === 0) {
-      setFilmQueryIsValid(false);
-    } else {
+    if (e.target.value && e.target.value.length > 0) {
       setFilmQueryIsValid(true);
     }
-      setSearchQueryString(e.target.value);
-      props.onSearchQueryChanged(e.target.value);
+    
+    if(props.saveFormState)
+      localStorage.setItem("moviesSearchQuery", e.target.value);
+
+    setSearchQueryString(e.target.value);    
   }
 
-    return (
-      <section className="search-form">
-        <form className='search-form__container' noValidate onSubmit={handleSubmit}>
-          <div className='search-form__search'>
-            <img className='search-form__img' src={search} alt='Лупа'></img>
-            <input id="film" className='search-form__input' required placeholder='Фильм' value={searchQueryString || ''} onChange={handleChangeQuery}></input>
-            <span id="film-error" className={filmValidationClass}>Нужно ввести ключевое слово</span>
-            <button className='search-form__btn' type='submit'>Найти</button>
-          </div>
-          <div className='search-form__span'></div>
-          <MovieFilter checkShort={props.checkShortMovies} onChecked={shortMoviesOnly} />
-        </form>
-      </section>
-    )
+  function handleChangeShort(e){
+  
+    if(props.saveFormState)
+      localStorage.setItem("onlyShortMovies", JSON.stringify(e.target.checked));
+
+    setShortMoviesOnly(e.target.checked);
+
+    props.onSearchMovies(searchQueryString, e.target.checked);
   }
 
-  export default SearchForm;
+  return (
+    <section className="search-form">
+      <form className='search-form__container' noValidate onSubmit={handleSubmit}>
+        <div className='search-form__search'>
+          <img className='search-form__img' src={search} alt='Лупа'></img>
+          <input id="film" className='search-form__input' required placeholder='Фильм' value={searchQueryString || ''} onChange={handleChangeQuery}></input>
+          <button className='search-form__btn' type='submit'>Найти</button>
+        </div>
+        <div className='search-form__span'></div>
+        <MovieFilter checkShort={handleChangeShort} onChecked={shortMoviesOnly} />
+      </form>
+      <span id="film-error" className={filmValidationClass}>Нужно ввести ключевое слово</span>
+    </section>
+  )
+}
+
+export default SearchForm;

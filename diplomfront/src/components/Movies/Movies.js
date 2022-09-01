@@ -6,36 +6,47 @@ import Preloader from "../Preloader/Preloader";
 
 function Movies(props) {
 
+  const ref = React.useRef();
 
-  const windowSizeMax = window.innerWidth >= 1280 && 12;
-  const windowSizeMiddle =
-    window.innerWidth <= 1280 && window.innerWidth >= 769 && 12;
-  const windowSizeMiddleAndMin =
-    window.innerWidth <= 768 && window.innerWidth >= 481 && 8;
-  const windowSizeMin = window.innerWidth <= 480 && 5;
-  const condition =
-    windowSizeMax ||
-    windowSizeMiddle ||
-    windowSizeMiddleAndMin ||
-    windowSizeMin;
+  const [moviesToShow, setMoviesToShow] = React.useState(0);
+  
+  const allMoviesAdded = props.movies && moviesToShow === props.movies.length;
 
-  const [countMovies, setCountMovies] = React.useState(condition);
+  const getNumberOfColumns = React.useCallback(() => {
+    const columnsString = getComputedStyle(ref.current).getPropertyValue("grid-template-columns");
+    if (!columnsString) 
+      return;
+    return columnsString.split(' ').length;
+}, []);
+
+React.useEffect(() => {
+  function getInitialNumber() {
+      const columnsCount = getNumberOfColumns();
+      return columnsCount > 1 ? columnsCount * 4 : 5;
+  }
+  
+  if (!props.movies || props.movies.length === 0) 
+    return;
+    
+  if (allMoviesAdded) 
+    setMoviesToShow(props.movies.length);
+  else 
+    setMoviesToShow(Math.min(getInitialNumber(), props.movies.length));
+}, [props.movies, allMoviesAdded, getNumberOfColumns]);
 
   function loadMore() {
-    if (window.innerWidth >= 1280) {
-      setCountMovies(countMovies + 3);
-    } else if (window.innerWidth <= 1280 && window.innerWidth >= 769) {
-      setCountMovies(countMovies + 3);
-    } else if (window.innerWidth <= 768 && window.innerWidth >= 481) {
-      setCountMovies(countMovies + 2);
-    } else {
-      setCountMovies(countMovies + 2);
-    }
+    if (moviesToShow === props.movies.length) 
+      return;
+      
+    const moviesToAdd = getMoviesToAdd();
+    setMoviesToShow(Math.min(moviesToShow + moviesToAdd, props.movies.length));
   }
+
+  const getMoviesToAdd = () => Math.max(getNumberOfColumns(), 2);
 
   function SliceMovies(movies){
     if(movies)
-      return movies.slice(0, countMovies);
+      return movies.slice(0, moviesToShow);
     return movies;
   }
 
@@ -43,12 +54,12 @@ function Movies(props) {
     <>
       <Burger />
       <section className="movies">
-        <SearchForm checkShortMovies={props.checkShortMovies} searchQuery={props.query} isShortMovies={props.onlyShortMovies} onSearchMovies={props.onSearchMovies} onSearchQueryChanged={props.onSearchQueryChanged} />
+        <SearchForm saveFormState={true} checkShortMovies={props.checkShortMovies} searchQuery={props.query} isShortMovies={props.onlyShortMovies} onSearchMovies={props.onSearchMovies} onSearchQueryChanged={props.onSearchQueryChanged} />
         {props.showPreloader ? <Preloader /> : props.movies && props.movies.length === 0 && !props.moviesApiReturnError && <p className='movies__span'>Ничего не найдено</p>}
         {props.moviesApiReturnError && !props.showPreloader ? <p className='movies__span'>Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте еще раз.</p> :
           <>
-            <MoviesCardList movies={SliceMovies(props.movies)} savedMovies={props.savedMovies} saveMovie={props.saveMovie} />
-            {props.movies && countMovies < props.movies.length && <button className='movies__btn' onClick={loadMore}>Ещё</button>}
+            <MoviesCardList reference = {ref} movies={SliceMovies(props.movies)} savedMovies={props.savedMovies} saveMovie={props.saveMovie} />
+            {props.movies && moviesToShow < props.movies.length && <button className='movies__btn' onClick={loadMore}>Ещё</button>}
           </>
         }
       </section>
