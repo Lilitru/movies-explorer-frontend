@@ -5,6 +5,12 @@
   font-size: 14px;
   line-height: 17px;
   color: #000000;
+  border: none;
+  background: inherit;
+  cursor: pointer;
+}
+.error__link:hover{
+  opacity: 0.8;
 }
 @media screen and (max-width: 767px) {
   .error__link {

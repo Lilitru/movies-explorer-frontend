@@ -1,0 +1,9 @@
+.register__error{
+        font-family: Inter;
+        font-style: normal;
+        font-size: 10px;
+        line-height: 12px;
+        color: #FF4062;
+        margin-top: -18px;
+        padding-bottom: 6px;
+    }

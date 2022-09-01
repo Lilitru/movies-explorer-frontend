@@ -8,6 +8,11 @@
     line-height: 16px;
     color: #FF4062;;
     max-width: 410px;
+    background-color: inherit;
+}
+.profile__link:hover{
+  opacity: 0.8;
+  cursor: pointer;
 }
 @media screen and (max-width: 767px) {
     .profile__link {

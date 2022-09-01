@@ -1,0 +1,15 @@
+.film__error {
+  display: none;
+}
+
+.film__error-active {
+  font-family: Inter;
+  font-style: normal;
+  font-size: 12px;
+  line-height: 12px;
+  color: #ff4062;
+  margin: 20px 0 0 0 ;
+  padding: 0;
+  white-space: nowrap;
+  align-self: center;
+}

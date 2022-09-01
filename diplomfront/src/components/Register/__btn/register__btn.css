@@ -12,10 +12,11 @@
   min-width: 396px;
   padding: 0;
   text-align: center;
-  cursor: pointer;
+  opacity: 0.3;
 }
-.register__btn:hover{
-  opacity: 0.8;
+.register__btn_active {
+  cursor: pointer;
+  opacity: 1;
 }
 @media screen and (max-width: 767px) {
   .register__btn {
